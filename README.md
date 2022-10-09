@@ -3,3 +3,10 @@
 
 ## ⚠️ สำคัญ!! ⚠️
 อย่าลืมทำความเข้าใจโค้ดก่อนก็อปเพื่อประโยชน์กับตัวเองนะ!!
+
+
+<div align="center">
+  <a href="https://komarev.com/ghpvc/?username=poomwebtech&color=brightgreen&label=จำนวนคนเข้ามาส่อง">
+    <img align="center" src="https://komarev.com/ghpvc/?username=poomwebtech&color=brightgreen&label=จำนวนคนเข้ามาส่อง" />
+  </a>
+</div>
