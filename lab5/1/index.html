@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="data"></div>
+    <script>
+      const dataDiv = document.getElementById("data");
+
+      let requestURL = "data.json";
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          ExtractData(JSON.parse(request.responseText));
+        }
+      };
+      request.open("GET", requestURL, true);
+      request.send();
+
+      function ExtractData(datas) {
+        for (const data of datas) {
+          const div = document.createElement("div");
+
+          const myB = document.createElement("b");
+          myB.appendChild(
+            document.createTextNode(
+              data.id + " " + data.f_name + " " + data.l_name
+            )
+          );
+          div.appendChild(myB);
+          div.appendChild(
+            document.createTextNode(
+              ` (${data.gender}) is a ${data.position}, ${data.address}`
+            )
+          );
+          dataDiv.appendChild(div);
+        }
+      }
+    </script>
+  </body>
+</html>

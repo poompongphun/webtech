@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+
+    <style>
+      body {
+        font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+      }
+      .question {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Quiz 1</h1>
+      <form id="quiz"></form>
+    </div>
+    <script>
+      const quizArea = document.getElementById("quiz");
+
+      let requestURL = "questionAnswerData.json";
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          ExtractData(JSON.parse(request.responseText));
+        }
+      };
+      request.open("GET", requestURL, true);
+      request.send();
+
+      function ExtractData(datas) {
+        datas.forEach((data, index) => {
+          const div = document.createElement("div");
+          div.classList.add("question");
+          div.appendChild(
+            document.createTextNode(`${index + 1}) ${data.question}`)
+          );
+          quizArea.appendChild(div);
+
+          div.appendChild(createRadio(data.answers.a, index));
+          div.appendChild(createRadio(data.answers.b, index));
+          div.appendChild(createRadio(data.answers.c, index));
+        });
+        const button = document.createElement("button");
+        button.appendChild(document.createTextNode("Submit"));
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          let score = 0;
+          datas.forEach((data, index) => {
+            const radios = document.getElementsByName(`question${index + 1}`);
+            console.log();
+            for (let i = 0; i < radios.length; i++) {
+              const radio = radios[i];
+              if (radio.checked) {
+                if (radio.value == data.answers[data.answers.correct]) {
+                  score++;
+                }
+              }
+            }
+          });
+          alert(`Your score is ${score}/${datas.length}`);
+        });
+        quizArea.appendChild(button);
+      }
+
+      function createRadio(text, index) {
+        const ansDiv = document.createElement("div");
+        const radio = document.createElement("input");
+        radio.setAttribute("type", "radio");
+        radio.setAttribute("name", `question${index + 1}`);
+        radio.setAttribute("value", text);
+        radio.setAttribute("id", `question${index + 1}`);
+        ansDiv.appendChild(radio);
+        ansDiv.appendChild(document.createTextNode(text));
+        return ansDiv;
+      }
+    </script>
+  </body>
+</html>

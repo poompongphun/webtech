@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googbleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>PANDA FOOD HUB</title>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <h1 class="text-center my-4">
+        PANDA FOOD <span class="bg-warning rounded py-1 px-2">HUB</span>
+      </h1>
+      <div class="text-center">
+        เธอคือทุกสิ่ง ในความจริงในความฝัน คือทุกอย่างเหมือนใจต้องการ
+        เธอเป็นนิทานที่ฉันอ่าน ก่อนหลับตาและนอนฝัน เธอคือหัวใจ
+        ไม่ว่าใครไม่อาจเทียมเทียบเท่าเธอ
+      </div>
+      <div class="row mt-5">
+        <div class="col col-8">
+          <div class="card overflow-hidden">
+            <div class="d-flex">
+              <div class="w-50">
+                <img
+                  src="https://cdn.media.amplience.net/i/japancentre/guide-page-sushi-79-maki-sushi/Maki-sushi-rolls?$poi$&w=1200&h=630&sm=c&fmt=auto"
+                  class="float-left w-100 h-100"
+                  alt="food"
+                />
+              </div>
+              <div class="card-body p-3 position-relative">
+                <h5 class="card-title">Sushi</h5>
+                <p class="card-text">
+                  Deliver by AJ.Manop Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit.
+                </p>
+                <button
+                  class="float-right btn btn-warning"
+                  onclick="addOrder('Sushi')"
+                >
+                  Add Order
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card overflow-hidden">
+            <div class="d-flex">
+              <div class="w-50">
+                <img
+                  src="https://i2.wp.com/seonkyounglongest.com/wp-content/uploads/2021/03/Tom-Yum-07-mini.jpg?fit=1000%2C667&ssl=1"
+                  class="float-left w-100 h-100"
+                  alt="food"
+                />
+              </div>
+              <div class="card-body p-3 position-relative">
+                <h5 class="card-title">Tom yum kung</h5>
+                <p class="card-text">
+                  Deliver by AJ.Manop Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit.
+                </p>
+                <button
+                  class="float-right btn btn-warning"
+                  onclick="addOrder('Tom yum kung')"
+                >
+                  Add Order
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card overflow-hidden">
+            <div class="d-flex">
+              <div class="w-50">
+                <img
+                  src="https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900"
+                  class="float-left w-100 h-100"
+                  alt="food"
+                />
+              </div>
+              <div class="card-body p-3 position-relative">
+                <h5 class="card-title">Pizza</h5>
+                <p class="card-text">
+                  Deliver by AJ.Manop Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit.
+                </p>
+                <button
+                  class="float-right btn btn-warning"
+                  onclick="addOrder('Pizza')"
+                >
+                  Add Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-4">
+          <div class="card" style="width: 18rem">
+            <ul class="list-group list-group-flush" id="orderItem">
+              <li class="list-group-item bg-primary color-white text-white">
+                รายการออเดอร์
+              </li>
+              <!-- <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const orderItem = document.getElementById("orderItem");
+      function addOrder(text) {
+        const newLi = document.createElement("li");
+        newLi.className =
+          "list-group-item d-flex justify-content-between align-items-center";
+
+        const newText = document.createElement("span");
+        newText.appendChild(document.createTextNode("x1"));
+
+        newLi.appendChild(document.createTextNode(text));
+        newLi.appendChild(newText);
+        orderItem.appendChild(newLi);
+      }
+    </script>
+  </body>
+</html>

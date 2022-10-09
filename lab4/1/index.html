@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate</title>
+  </head>
+  <body>
+    <form id="myform">
+      <div>Value 1: <input type="number" id="val1" /></div>
+      <div>Value 2: <input type="number" id="val2" /></div>
+      <button type="button" onclick="calc()">Calculate</button>
+    </form>
+    <div id="result"></div>
+    <div id="history"></div>
+    <script>
+      const form = document.getElementById("myform");
+      const result = document.getElementById("result");
+      const history = document.getElementById("history");
+      function calc() {
+        const val1 = Number(form.val1.value);
+        const val2 = Number(form.val2.value);
+        const results = val1 + val2;
+        while (result.firstChild) {
+          result.removeChild(result.firstChild);
+        }
+        result.appendChild(document.createTextNode("Result : " + results));
+
+        let newDiv = document.createElement("div");
+        newDiv.appendChild(
+          document.createTextNode(`${val1} + ${val2} = ${results}`)
+        );
+        history.appendChild(newDiv);
+      }
+    </script>
+  </body>
+</html>

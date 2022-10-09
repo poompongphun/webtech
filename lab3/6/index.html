@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googbleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Tic tac toe</title>
+    <style>
+      body {
+        font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+      }
+      .myblock {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(235, 235, 235);
+        font-size: 120px;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="text-center">Tic Tac Toe</h1>
+      <h1 class="text-center" id="turn">Turn X</h1>
+      <div class="row no-gutters mx-auto" style="width: 650px">
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-4 p-2">
+          <div
+            class="embed-responsive embed-responsive-1by1"
+            style="width: 100%"
+          >
+            <button
+              class="myblock embed-responsive-item"
+              onclick="clickbtn(this)"
+            ></button>
+          </div>
+        </div>
+        <div class="col col-12">
+          <div id="reset">
+            <button
+              onclick="reset()"
+              class="btn btn-warning"
+              style="width: 100%"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let isplayer1 = true;
+      const turn = document.getElementById("turn");
+      function clickbtn(ele) {
+        if (isplayer1) {
+          ele.innerHTML = "X";
+          turn.innerHTML = "Turn O";
+        } else {
+          ele.innerHTML = "O";
+          turn.innerHTML = "Turn X";
+        }
+        ele.disabled = true;
+        checkwinner();
+        isplayer1 = !isplayer1;
+      }
+      function checkwinner() {
+        let btn1 = document.getElementsByClassName("myblock")[0].innerHTML;
+        let btn2 = document.getElementsByClassName("myblock")[1].innerHTML;
+        let btn3 = document.getElementsByClassName("myblock")[2].innerHTML;
+        let btn4 = document.getElementsByClassName("myblock")[3].innerHTML;
+        let btn5 = document.getElementsByClassName("myblock")[4].innerHTML;
+        let btn6 = document.getElementsByClassName("myblock")[5].innerHTML;
+        let btn7 = document.getElementsByClassName("myblock")[6].innerHTML;
+        let btn8 = document.getElementsByClassName("myblock")[7].innerHTML;
+        let btn9 = document.getElementsByClassName("myblock")[8].innerHTML;
+        if (
+          (btn1 == "X" && btn2 == "X" && btn3 == "X") ||
+          (btn4 == "X" && btn5 == "X" && btn6 == "X") ||
+          (btn7 == "X" && btn8 == "X" && btn9 == "X") ||
+          (btn1 == "X" && btn4 == "X" && btn7 == "X") ||
+          (btn2 == "X" && btn5 == "X" && btn8 == "X") ||
+          (btn3 == "X" && btn6 == "X" && btn9 == "X") ||
+          (btn1 == "X" && btn5 == "X" && btn9 == "X") ||
+          (btn3 == "X" && btn5 == "X" && btn7 == "X")
+        ) {
+          disableBtn();
+          turn.innerHTML = "X win";
+          alert("Player X win");
+        } else if (
+          (btn1 == "O" && btn2 == "O" && btn3 == "O") ||
+          (btn4 == "O" && btn5 == "O" && btn6 == "O") ||
+          (btn7 == "O" && btn8 == "O" && btn9 == "O") ||
+          (btn1 == "O" && btn4 == "O" && btn7 == "O") ||
+          (btn2 == "O" && btn5 == "O" && btn8 == "O") ||
+          (btn3 == "O" && btn6 == "O" && btn9 == "O") ||
+          (btn1 == "O" && btn5 == "O" && btn9 == "O") ||
+          (btn3 == "O" && btn5 == "O" && btn7 == "O")
+        ) {
+          disableBtn();
+          turn.innerHTML = "O win";
+          alert("Player O win");
+        } else if (
+          btn1 != "" &&
+          btn2 != "" &&
+          btn3 != "" &&
+          btn4 != "" &&
+          btn5 != "" &&
+          btn6 != "" &&
+          btn7 != "" &&
+          btn8 != "" &&
+          btn9 != ""
+        ) {
+          disableBtn();
+          turn.innerHTML = "Draw";
+          alert("Draw");
+        }
+      }
+      function disableBtn() {
+        let btn = document.getElementsByClassName("myblock");
+        for (let i = 0; i < btn.length; i++) {
+          btn[i].disabled = true;
+        }
+      }
+      function reset() {
+        let btn = document.getElementsByClassName("myblock");
+        for (let i = 0; i < btn.length; i++) {
+          btn[i].innerHTML = "";
+          btn[i].disabled = false;
+        }
+        turn.innerHTML = isplayer1 ? "Turn X" : "Turn O";
+      }
+    </script>
+  </body>
+</html>

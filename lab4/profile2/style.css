@@ -1,0 +1,15 @@
+body {
+  font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+  background-color: #171a2b;
+}
+.navbar {
+  background-color: #0f1224;
+}
+.navbar .item {
+  width: 88px;
+}
+
+.intro {
+    background-color: #111427;
+    height: 60vh;
+}

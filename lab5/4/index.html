@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+      }
+      img {
+        width: 100%;
+        margin-top: -30px;
+        margin-bottom: 10px;
+      }
+      h5 {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="movieArea" class="row mt-5"></div>
+    </div>
+    <script>
+      const movieArea = document.getElementById("movieArea");
+      let requestURL = "movies.json";
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          ExtractData(JSON.parse(request.responseText));
+        }
+      };
+      request.open("GET", requestURL, true);
+      request.send();
+
+      function ExtractData(datas) {
+        console.log(datas);
+        for (const data of datas.movies.showing) {
+          const div = document.createElement("div");
+          div.classList.add("col");
+          div.classList.add("col-12");
+          div.classList.add("col-md-4");
+          div.classList.add("col-sm-6");
+          div.classList.add("col-lg-3");
+          div.classList.add("my-4");
+
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.classList.add("w-100");
+          card.classList.add("px-3");
+          card.classList.add("text-center");
+
+          const img = document.createElement("img");
+          img.src = data.poster;
+          img.alt = data.title_en;
+
+          const h5 = document.createElement("h5");
+          h5.innerText = data.title_th;
+
+          const div2 = document.createElement("div");
+          div2.innerText = data.releasedate;
+
+          const button = document.createElement("button");
+          button.classList.add("btn");
+          button.classList.add("btn-primary");
+          button.classList.add("my-2");
+          button.appendChild(document.createTextNode("เช็ครอบภาพยนตร์"));
+
+          card.appendChild(img);
+          card.appendChild(h5);
+          card.appendChild(div2);
+          card.appendChild(button);
+
+          div.appendChild(card);
+
+          movieArea.appendChild(div);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .card {
+        position: relative;
+        width: 100%;
+        box-shadow: 0em 0.7em 2em #0002;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .card img {
+        width: 100%;
+        object-fit: contain;
+      }
+      .card h2{
+        text-align: center;
+      }
+      @media screen and (min-width: 600px) {
+        .grid {
+            grid-template-columns: auto auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Popular images</h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis adipisci
+      temporibus corrupti quia dolore esse laborum neque sequi, numquam quasi
+      necessitatibus officia, quis reiciendis non quidem error ad expedita
+      obcaecati. Quos, sint temporibus exercitationem dolorum atque dignissimos
+      hic maiores, possimus quas voluptate qui quam, sunt necessitatibus odio
+      voluptates saepe accusantium?
+    </div>
+    <h1>Images List</h1>
+    <div class="grid">
+      <div class="card">
+        <img src="https://picsum.photos/300/300?1" alt="img" />
+        <h2>Wow Cool IMage</h2>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/300/300?2" alt="img" />
+        <h2>Wow Cool IMage</h2>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/300/300?3" alt="img" />
+        <h2>Wow Cool IMage</h2>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/300/300?4" alt="img" />
+        <h2>Wow Cool IMage</h2>
+      </div>
+    </div>
+  </body>
+</html>

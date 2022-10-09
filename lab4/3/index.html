@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      th {
+        background-color: #eeeeee;
+        padding: 5px 10px;
+      }
+      hr {
+        margin: 30px 0px 30px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myform">
+      <input type="text" placeholder="รหัสนักศึกษา" id="id" />
+      <input type="text" placeholder="ชื่อ" id="fname" />
+      <input type="text" placeholder="นามสกุล" id="lname" />
+      <button type="button" onclick="regis()">ลงทะเบียน</button>
+    </form>
+    <hr />
+    <table id="table">
+      <tr>
+        <th>ลำดับที่</th>
+        <th>รหัสนักศึกษา</th>
+        <th>ชื่อ</th>
+        <th>นามสกุล</th>
+      </tr>
+    </table>
+    <script>
+      const form = document.getElementById("myform");
+      const table = document.getElementById("table");
+      function regis() {
+        const id = form.id.value;
+        const fname = form.fname.value;
+        const lname = form.lname.value;
+
+        colorTextfield(
+          "-internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133))",
+          true
+        );
+        if (id && fname && lname) {
+          const newLine = document.createElement("tr");
+
+          const newNum = document.createElement("td");
+          const newId = document.createElement("td");
+          const newF = document.createElement("td");
+          const newL = document.createElement("td");
+
+          newNum.appendChild(document.createTextNode(table.childElementCount));
+          newId.appendChild(document.createTextNode(id));
+          newF.appendChild(document.createTextNode(fname));
+          newL.appendChild(document.createTextNode(lname));
+
+          newLine.appendChild(newNum);
+          newLine.appendChild(newId);
+          newLine.appendChild(newF);
+          newLine.appendChild(newL);
+
+          table.appendChild(newLine);
+        } else {
+          colorTextfield("red");
+        }
+      }
+      function colorTextfield(color, check = false) {
+        const txtfield = document.getElementsByTagName("input");
+        for (let i = 0; i < txtfield.length; i++) {
+          const ele = txtfield[i];
+          if (ele.value === "" || check) {
+            ele.style.borderColor = '';
+            ele.style.borderColor = color;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

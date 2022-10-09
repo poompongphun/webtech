@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3</title>
+    <style>
+      .chart {
+        width: 500px;
+      }
+      .bar {
+        --point: 100%;
+        --color: black;
+        width: var(--point);
+        background-color: var(--color);
+        padding: 8px 10px;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart">
+      <div class="bar" style="--point: 60%; --color: red">J.Depp</div>
+      <div class="bar" style="--point: 90%; --color: blue">Washington</div>
+      <div class="bar" style="--point: 50%; --color: green">B.Pitt</div>
+      <div class="bar" style="--point: 80%; --color: grey">R.Crowe</div>
+      <div class="bar" style="--point: 75%; --color: peru">T.Cruise</div>
+    </div>
+  </body>
+</html>

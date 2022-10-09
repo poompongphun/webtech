@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #board {
+        width: fit-content;
+        margin-top: 50px;
+      }
+      .block {
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+      }
+      .row {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+      .block {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myform">
+      <input type="number" id="num" />:
+      <button type="button" onclick="createBlock()">Submit</button>
+    </form>
+    <div id="board"></div>
+    <script>
+      const myform = document.getElementById("myform");
+      const board = document.getElementById("board");
+      function createBlock() {
+        while (board.firstChild) {
+          board.removeChild(board.firstChild);
+        }
+        const num = Number(myform.num.value);
+        for (let i = 0; i < Math.ceil(num / 8); i++) {
+          const row = document.createElement("div");
+          row.classList.add("row");
+          for (let j = 0; j < 8; j++) {
+            if (8 * i + j < num) {
+              const block = document.createElement("div");
+              block.classList.add("block");
+              if ((j + i) % 2 == 0) {
+                block.style.backgroundColor = "white";
+              } else {
+                block.style.backgroundColor = "black";
+              }
+              row.appendChild(block);
+            } else {
+              break;
+            }
+          }
+          board.appendChild(row);
+        }
+      }
+    </script>
+  </body>
+</html>

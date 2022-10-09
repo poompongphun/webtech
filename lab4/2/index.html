@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tranlate Form</title>
+  </head>
+  <body>
+    <div id="myform">
+      <div>
+        <label for="name">ชื่อ:</label>
+        <input type="text" id="name1" />
+      </div>
+      <div>
+        <label for="lname">นามสกุล:</label>
+        <input type="text" id="lname" />
+      </div>
+      <div>
+        <label for="country">ประเทศ:</label>
+        <select id="country">
+          <option value="" selected="">เลือกประเทศ</option>
+          <option value="th">ไทย</option>
+          <option value="en">อังกฤษ</option>
+        </select>
+      </div>
+      <button type="button" onclick="mytranslate()">เปลี่ยน</button>
+    </div>
+    <script>
+      const lang = {
+        th: {
+          name: "ชื่อ",
+          lname: "นามสกุล",
+          country: "ประเทศ",
+          choose: "เลือกประเทศ",
+          countryVal: [
+            {
+              text: "ไทย",
+              val: "th",
+            },
+            {
+              text: "เวียดนาม",
+              val: "vt",
+            },
+            {
+              text: "ลาว",
+              val: "lao",
+            },
+            {
+              text: "มาเลย์เซีย",
+              val: "malay",
+            },
+            {
+              text: "สิงค์โปร์",
+              val: "sg",
+            },
+            {
+              text: "ฟิลิปปินส์",
+              val: "ph",
+            },
+            {
+              text: "เมียนมาร์",
+              val: "my",
+            },
+            {
+              text: "กัมพูชา",
+              val: "cam",
+            },
+            {
+              text: "บรูไน",
+              val: "br",
+            },
+          ],
+          btn: "เปลี่ยนเป็นอังกฤษ",
+        },
+        en: {
+          name: "First Name",
+          lname: "Last Name",
+          country: "Country",
+          choose: "Select a country",
+          countryVal: [
+            {
+              text: "Thailand",
+              val: "th",
+            },
+            {
+              text: "Vietnam",
+              val: "vt",
+            },
+            {
+              text: "Laos",
+              val: "lao",
+            },
+            {
+              text: "Malaysia",
+              val: "malay",
+            },
+            {
+              text: "Singapore",
+              val: "sg",
+            },
+            {
+              text: "Philippines",
+              val: "ph",
+            },
+            {
+              text: "Myanmar",
+              val: "my",
+            },
+            {
+              text: "Cambodia",
+              val: "cam",
+            },
+            {
+              text: "Brunei",
+              val: "br",
+            },
+          ],
+          btn: "Change to thai",
+        },
+      };
+      let isThai = false;
+      mytranslate();
+      function mytranslate() {
+        const form = document.getElementById("myform");
+        // const tranVal = document.getElementById("country").value || "th";
+        let tranVal = isThai ? "en" : "th";
+        while (form.firstChild) {
+          form.removeChild(form.firstChild);
+        }
+        form.appendChild(createTextfield("name", lang[tranVal].name));
+        form.appendChild(createTextfield("lname", lang[tranVal].lname));
+        form.appendChild(
+          createSelect(
+            "country",
+            lang[tranVal].country,
+            lang[tranVal].countryVal,
+            lang[tranVal].choose
+          )
+        );
+        form.appendChild(createButton(lang[tranVal].btn));
+        isThai = !isThai
+        // console.log(createTextfield("name", lang[tranVal].name));
+        // console.log(createTextfield("lname", lang[tranVal].lname));
+        // console.log(
+        //   createSelect(
+        //     "country",
+        //     lang[tranVal].country,
+        //     lang[tranVal].countryVal,
+        //     lang[tranVal].choose
+        //   )
+        // );
+        // console.log(createButton(lang[tranVal].btn));
+      }
+      function createTextfield(name, text) {
+        let newDiv = document.createElement("div");
+
+        const newLabel = document.createElement("label");
+        const newLabelAtt = document.createAttribute("for");
+        newLabelAtt.value = name;
+        newLabel.appendChild(document.createTextNode(text + ": "));
+        newLabel.setAttributeNode(newLabelAtt);
+
+        let newInput = document.createElement("input");
+        let newInputType = document.createAttribute("type");
+        newInputType.value = "text";
+        let newInputId = document.createAttribute("id");
+        newInputId.value = name;
+        newInput.setAttributeNode(newInputType);
+        newInput.setAttributeNode(newInputId);
+
+        newDiv.appendChild(newLabel);
+        newDiv.appendChild(newInput);
+
+        return newDiv;
+      }
+
+      function createSelect(name, text, country, chooseText) {
+        const newDiv = document.createElement("div");
+
+        const newLabel = document.createElement("label");
+        const newLabelAtt = document.createAttribute("for");
+        newLabelAtt.value = name;
+        newLabel.appendChild(document.createTextNode(text + ": "));
+        newLabel.setAttributeNode(newLabelAtt);
+
+        const newSelect = document.createElement("select");
+        let newOpId = document.createAttribute("id");
+        newOpId.value = name;
+        newSelect.setAttributeNode(newOpId);
+
+        const newCountryDefault = document.createElement("option");
+        const newCountryVal = document.createAttribute("value");
+        const newCountrySelected = document.createAttribute("selected");
+        newCountryVal.value = "";
+        newCountryDefault.setAttributeNode(newCountryVal);
+        newCountryDefault.setAttributeNode(newCountrySelected);
+        newCountryDefault.appendChild(document.createTextNode(chooseText));
+        newSelect.appendChild(newCountryDefault);
+
+        for (let i = 0; i < country.length; i++) {
+          const ele = country[i];
+          const newCountry = document.createElement("option");
+          const newCountryVal = document.createAttribute("value");
+          newCountryVal.value = country[i].val;
+          newCountry.setAttributeNode(newCountryVal);
+          newCountry.appendChild(document.createTextNode(country[i].text));
+          newSelect.appendChild(newCountry);
+        }
+        newDiv.appendChild(newLabel);
+        newDiv.appendChild(newSelect);
+
+        return newDiv;
+      }
+
+      function createButton(text) {
+        const newBtn = document.createElement("button");
+        const newBtnClick = document.createAttribute("onclick");
+        newBtnClick.value = "mytranslate()";
+        newBtn.setAttributeNode(newBtnClick);
+        newBtn.appendChild(document.createTextNode(text));
+
+        return newBtn;
+      }
+    </script>
+  </body>
+</html>

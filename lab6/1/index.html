@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+        width: 100%;
+      }
+      .block {
+        grid-column: span 1;
+      }
+      @media screen and (min-width: 400px) {
+        .grid {
+          grid-template-columns: auto auto auto;
+        }
+        .block {
+          grid-column: span 3;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="block">
+        <h1>Programming language</h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eos nisi
+        qui molestiae animi non cumque vel repellendus, sequi nemo dolorem optio
+        perspiciatis atque, mollitia earum laboriosam! Distinctio cumque odio
+        omnis nulla dicta similique iste dolorum, aperiam vitae ipsum tempore.
+        Ipsum voluptatibus voluptate, hic libero repellendus alias consequuntur
+        aut iste!
+      </div>
+      <div>
+        <h1>C</h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eos nisi
+        qui molestiae animi non cumque vel repellendus, sequi nemo dolorem optio
+        perspiciatis atque, mollitia earum laboriosam! Distinctio cumque odio
+        omnis nulla dicta similique iste dolorum, aperiam vitae ipsum tempore.
+        Ipsum voluptatibus voluptate, hic libero repellendus alias consequuntur
+        aut iste!
+      </div>
+      <div>
+        <h1>Python</h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eos nisi
+        qui molestiae animi non cumque vel repellendus, sequi nemo dolorem optio
+        perspiciatis atque, mollitia earum laboriosam! Distinctio cumque odio
+        omnis nulla dicta similique iste dolorum, aperiam vitae ipsum tempore.
+        Ipsum voluptatibus voluptate, hic libero repellendus alias consequuntur
+        aut iste!
+      </div>
+      <div>
+        <h1>Java</h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eos nisi
+        qui molestiae animi non cumque vel repellendus, sequi nemo dolorem optio
+        perspiciatis atque, mollitia earum laboriosam! Distinctio cumque odio
+        omnis nulla dicta similique iste dolorum, aperiam vitae ipsum tempore.
+        Ipsum voluptatibus voluptate, hic libero repellendus alias consequuntur
+        aut iste!
+      </div>
+    </div>
+  </body>
+</html>

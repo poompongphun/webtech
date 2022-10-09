@@ -1,0 +1,7 @@
+table {
+    border-collapse: collapse;
+    font-size: large;
+}
+tr {
+    border-bottom: 1px solid black;
+}
